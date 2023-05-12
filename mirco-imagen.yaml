@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-imagen-deploy
+spec:
+  selector:
+    matchLabels:
+      app: micro-imagen
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: micro-imagen
+    spec:
+     containers:
+     - name: micro-imagen
+       image: fertay/micro-imagen
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8080
